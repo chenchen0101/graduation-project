@@ -1,0 +1,72 @@
+<template>
+  <div class="content">
+    <div class="title">登录思政学习平台</div>
+    <div class="input">
+      <input class="content" type="text" placeholder="请输入账号" />
+    </div>
+    <div class="input">
+      <input class="content" type="password" placeholder="请输入密码" />
+    </div>
+    <div class="login">提交</div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Login",
+};
+</script>
+
+<style lang="scss" scoped>
+.content {
+  // width: 1800px;
+  height: 700px;
+  background-color: #eff8fc;
+
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  height: 33px;
+  font-size: 40px;
+  padding: 40px 0;
+  margin-top: 85px;
+  margin-bottom: 40px;
+  font-weight: bold;
+  color: #515155;
+}
+.input {
+  width: 300px;
+  height: 45px;
+  margin: 0px 40px 25px 40px;
+  padding: 0 20px;
+  // box-sizing: border-box;
+  background: #f9f9f9;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  .content {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 17px;
+    color: #777;
+    &::placeholder {
+      color: #777;
+    }
+  }
+}
+.login {
+  margin-top: 50px;
+  width: 155px;
+  height: 55px;
+  line-height: 50px;
+  text-align: center;
+  background: #cc0001;
+  color: white;
+  font-size: 25px;
+}
+</style>
