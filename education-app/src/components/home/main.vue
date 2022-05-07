@@ -1,93 +1,140 @@
 <template>
   <div class="main">
     <div class="course">
-      <div class="tb">
+      <div class="topbar">
         <ul>
-          <li class="title">
-            <a href="">思政课堂</a>
-          </li>
-          <li class="title">
-            <a href="">必修课程</a>
-          </li>
-          <li class="title">
-            <a href="">选修课程</a>
-          </li>
-          <li class="title">
-            <a href="">特色课程</a>
-          </li>
-          <li class="title">
-            <a href="">政论课程</a>
+          <li v-for="(item, index) in courseList" :key="index">
+            <a href="">{{ item }}</a>
           </li>
         </ul>
       </div>
-      <div class="nr" id="classall">
-        <div class="kcnr">
-          <a href="/course" class="cover">
-            <img src="" alt="" class="img" />
-          </a>
-          <div class="name">
-            <p class="title">
-              <a href="" class="a">文化自信以社会主义</a>
-            </p>
-          </div>
+      <div class="courseall">
+        <div class="courseitem">
+          <img
+            src="../../assets/bbc3dbf1-50d0-4594-9182-4be4d00b8b8b.jpg"
+            class="img"
+          />
+          <p class="title">
+            <a href="">深刻理解习近平新时代中国特色社会主义思想</a>
+          </p>
         </div>
-        <div class="kcnr">
-          <a href="/course" class="cover">
-            <img src="" alt="" class="img" />
-          </a>
-          <div class="name"></div>
+        <div class="courseitem">
+          <img
+            src="../../assets/bbc3dbf1-50d0-4594-9182-4be4d00b8b8b.jpg"
+            class="img"
+          />
+          <p class="title">
+            <a href="">深刻理解习近平</a>
+          </p>
         </div>
-        <div class="kcnr">
-          <a href="/course" class="cover">
-            <img src="" alt="" class="img" />
-          </a>
-          <div class="name"></div>
+        <div class="courseitem">
+          <img
+            src="../../assets/bbc3dbf1-50d0-4594-9182-4be4d00b8b8b.jpg"
+            class="img"
+          />
+          <p class="title">
+            <a href="">深刻理解习近平</a>
+          </p>
         </div>
-        <div class="kcnr">
-          <a href="/course" class="cover">
-            <img src="" alt="" class="img" />
-          </a>
-          <div class="name"></div>
+        <div class="courseitem">
+          <img
+            src="../../assets/bbc3dbf1-50d0-4594-9182-4be4d00b8b8b.jpg"
+            class="img"
+          />
+          <p class="title">
+            <a href="">深刻理解习近平</a>
+          </p>
         </div>
-        <div class="kcnr">
-          <a href="/course" class="cover">
-            <img src="" alt="" class="img" />
-          </a>
-          <div class="name"></div>
+        <div class="courseitem">
+          <img
+            src="../../assets/bbc3dbf1-50d0-4594-9182-4be4d00b8b8b.jpg"
+            class="img"
+          />
+          <p class="title">
+            <a href="">深刻理解习近平</a>
+          </p>
         </div>
-        <div class="kcnr">
-          <a href="/course" class="cover">
-            <img src="" alt="" class="img" />
-          </a>
-          <div class="name"></div>
+        <div class="courseitem">
+          <img
+            src="../../assets/bbc3dbf1-50d0-4594-9182-4be4d00b8b8b.jpg"
+            class="img"
+          />
+          <p class="title">
+            <a href="">深刻理解习近平</a>
+          </p>
         </div>
-        <div class="kcnr">
-          <a href="/course" class="cover">
-            <img src="" alt="" class="img" />
-          </a>
-          <div class="name"></div>
+        <div class="courseitem">
+          <img
+            src="../../assets/bbc3dbf1-50d0-4594-9182-4be4d00b8b8b.jpg"
+            class="img"
+          />
+          <p class="title">
+            <a href="">深刻理解习近平</a>
+          </p>
         </div>
-        <div class="kcnr">
-          <a href="/course" class="cover">
-            <img src="" alt="" class="img" />
-          </a>
-          <div class="name"></div>
+        <div class="courseitem">
+          <img
+            src="../../assets/bbc3dbf1-50d0-4594-9182-4be4d00b8b8b.jpg"
+            class="img"
+          />
+          <p class="title">
+            <a href="">深刻理解习近平</a>
+          </p>
+        </div>
+        <div class="courseitem">
+          <img
+            src="../../assets/bbc3dbf1-50d0-4594-9182-4be4d00b8b8b.jpg"
+            class="img"
+          />
+          <p class="title">
+            <a href="">深刻理解习近平</a>
+          </p>
+        </div>
+        <div class="courseitem">
+          <img
+            src="../../assets/bbc3dbf1-50d0-4594-9182-4be4d00b8b8b.jpg"
+            class="img"
+          />
+          <p class="title">
+            <a href="">深刻理解习近平</a>
+          </p>
         </div>
       </div>
     </div>
   </div>
+  <div class="courseallbt" @click="toCourse">
+    <a href="">全部课程</a>
+  </div>
 </template>
 
 <script>
+import { reactive } from "vue";
+import { useRoute, useRouter } from "vue-router";
 export default {
   name: "Main",
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
+    const courseList = reactive([
+      "思政课堂",
+      "必修课程",
+      "选修课程",
+      "特色课程",
+      "政论课程",
+    ]);
+    const toCourse = () => {
+      router.push({ name: "Course" });
+    };
+    return { courseList, toCourse };
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .main {
+  width: 1700px;
   .course {
-    .tb {
+    .topbar {
       margin: 30px 0;
       height: 50px;
 
@@ -117,17 +164,47 @@ export default {
         }
       }
     }
-    .nr {
-      height: 450px;
-      .kcnr {
-        width: 295px;
-        height: 200px;
-        float: left;
-        margin-right: 31px;
-        margin-bottom: 30px;
-        background: bisque;
+    .courseall {
+      display: flex;
+      flex-wrap: wrap;
+
+      .courseitem {
+        width: 20%;
+
+        .img {
+          display: block;
+          width: 280px;
+          height: 210px;
+          margin: 20px auto;
+        }
+        .title {
+          text-align: center;
+        }
+        a {
+          text-decoration: none;
+          list-style: none;
+          color: #000;
+        }
       }
     }
+  }
+}
+.courseallbt {
+  width: 173px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background: #dadada;
+  margin: 0 auto;
+  border: 1px solid #c0c3c5;
+  a {
+    text-decoration: none;
+    list-style: none;
+    color: #000;
+    font-size: 20px;
+  }
+  a:hover {
+    color: red;
   }
 }
 </style>

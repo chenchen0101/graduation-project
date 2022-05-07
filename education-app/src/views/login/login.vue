@@ -7,13 +7,23 @@
     <div class="input">
       <input class="content" type="password" placeholder="请输入密码" />
     </div>
-    <div class="login">提交</div>
+    <div class="login" @click="handleLogin">提交</div>
   </div>
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+
 export default {
   name: "Login",
+  setup() {
+    const router = useRouter();
+    const handleLogin = () => {
+      localStorage.isLogin = true;
+      router.push({ name: "Home" });
+    };
+    return { handleLogin };
+  },
 };
 </script>
 
@@ -68,5 +78,6 @@ export default {
   background: #cc0001;
   color: white;
   font-size: 25px;
+  cursor: pointer;
 }
 </style>
