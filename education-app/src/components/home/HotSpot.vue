@@ -1,6 +1,5 @@
 <template>
   <div class="banner">
-    <!-- <img class="img" src="../../assets/26747.jpg" alt="" /> -->
     <swiper
       :autoplay="swiper_options.autoplay"
       :loop="swiper_options.loop"
@@ -8,16 +7,16 @@
       :pagination="swiper_options.pagination"
     >
       <swiper-slide
-        ><img
-          class="img"
-          src="	http://hnqmgc.17el.cn/upload/resources/image/2022/03/19/49772.png"
-          alt=""
+        ><img class="img" src="../../assets/26747.jpg" alt=""
       /></swiper-slide>
       <swiper-slide
-        ><img
-          class="img"
-          src="	http://hnqmgc.17el.cn/upload/resources/image/2021/09/28/46997.jpg"
-          alt=""
+        ><img class="img" src="../../assets/41725.png" alt=""
+      /></swiper-slide>
+      <swiper-slide
+        ><img class="img" src="../../assets/46997.jpg" alt=""
+      /></swiper-slide>
+      <swiper-slide
+        ><img class="img" src="../../assets/49772.png" alt=""
       /></swiper-slide>
     </swiper>
     <div class="hotspot">

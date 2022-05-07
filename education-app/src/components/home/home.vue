@@ -1,6 +1,5 @@
 <template>
   <StaticPart />
-
   <HotSpot />
   <Main />
 </template>

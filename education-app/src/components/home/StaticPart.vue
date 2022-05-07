@@ -1,37 +1,48 @@
+
 <template>
   <div class="wrapper">
     <div class="head">高校思政学习平台</div>
     <div class="topbar">
       <ul class="content">
         <li class="nav">
-          <a href="/" class="title">首页</a>
+          <a href="" class="title">首页</a>
         </li>
         <li class="nav">
-          <a href="/" class="title">关于我们</a>
+          <a href="" class="title">关于我们</a>
         </li>
         <li class="nav">
-          <a href="/" class="title">新闻中心</a>
+          <a href="" class="title" @click="toNews">新闻中心</a>
         </li>
         <li class="nav">
-          <a href="/" class="title">思政课程</a>
+          <a href="" class="title">思政课堂</a>
         </li>
         <li class="nav">
-          <a href="/" class="title">名师推荐</a>
+          <a href="" class="title">名师推荐</a>
         </li>
         <li class="nav">
-          <a href="/" class="title">交流园地</a>
+          <a href="" class="title">交流园地</a>
         </li>
         <li class="nav">
-          <a href="/" class="title">登录</a>
+          <a href="" class="title">个人中心</a>
         </li>
       </ul>
     </div>
   </div>
+  <router-view></router-view>
 </template>
 
 <script>
+import { reactive, ref } from "vue";
+import { useRouter } from "vue-router";
 export default {
   name: "StaticPart",
+  setup() {
+    const router = useRouter();
+    const toNews = () => {
+      router.push({ name: "News" });
+    };
+    return { toNews };
+  },
 };
 </script>
 
