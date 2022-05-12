@@ -1,16 +1,13 @@
 <template>
-  <StaticPart />
-  <HotSpot />
-  <Main />
+  <HomeHeader />
+  <router-view></router-view>
 </template>
 
 <script>
-import StaticPart from "./StaticPart.vue";
-import HotSpot from "./HotSpot.vue";
-import Main from "./main.vue";
+import HomeHeader from "../home/Homeheader.vue";
 export default {
   name: "Home",
-  components: { StaticPart, HotSpot, Main },
+  components: { HomeHeader },
   setup() {},
 };
 </script>

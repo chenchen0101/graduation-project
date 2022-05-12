@@ -1,28 +1,27 @@
 import { createRouter, createWebHashHistory } from "vue-router"
-import Home from '../components/home/home.vue'
-import News from '../views/news/newscenter.vue'
+import Home from '../components/home/Home.vue'
+import NewsCenter from '../views/news/NewsCenter.vue'
 import Login from '../views/login/login.vue'
-import Course from '../views/course/course.vue'
-import StaticPart from '../components/home/StaticPart.vue'
+import AllCourse from '../views/AllCourse.vue'
+import HomeMain from "../components/home/HomeMain.vue"
+import HomeCourse from "../components/home/HomeCourse.vue"
+import Teacher from "../views/teacheres/Teacher.vue"
+import News from "../views/news/News.vue"
+import TeacherMsg from "../views/teacheres/TeacherMsg.vue"
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home,
     children: [
+      { path: '', name: "HomeMain", component: HomeMain },
+      { path: '/AllCourse', name: "AllCourse", component: AllCourse },
+      { path: '/News', name: "News", component: News, children: [{ path: '/NewsCenter', name: "NewsCenter", component: NewsCenter },] },
 
+      { path: '/Teacher', name: "Teacher", component: Teacher },
+      { path: "/News", name: "News", component: News },
     ]
   },
-  {
-    path: '/staticpart',
-    name: 'Staticpart',
-    component: StaticPart,
-    children: [
-      { path: '/news', name: "News", component: News },
-      { path: '/course', name: "Course", component: Course },
-    ]
-  },
-
   {
     path: '/login',
     name: 'Login',
@@ -36,7 +35,8 @@ const routes = [
       }
 
     }
-  }
+  },
+  { path: "/TeacherMsg", name: "TeacherMsg", component: TeacherMsg }
 ]
 const router = createRouter({
   history: createWebHashHistory(),

@@ -4,13 +4,13 @@
       <div class="left_bt">新闻中心</div>
       <div class="left_nr">
         <ul class="content">
-          <li class="title">
+          <li class="type">
             <a>通知公告</a>
           </li>
-          <li class="title">
+          <li class="type">
             <a>新闻资讯</a>
           </li>
-          <li class="title">
+          <li class="type">
             <a>党史故事</a>
           </li>
         </ul>
@@ -21,39 +21,56 @@
         <a>首页</a>
         > 新闻中心 > 新闻资讯
       </div>
-      <div class="right_nr">
+      <div class="text" v-for="item in newsItem" :key="item.id">
         <div class="title">
-          {{ news.title }}
+          {{ item.title }}
         </div>
-        <div class="text">
-          来源：&nbsp;{{ news.origin }} &nbsp; &nbsp; &nbsp;作者：{{
-            news.author
-          }}
-          发布时间：{{ news.publishtime }} &nbsp; &nbsp; &nbsp; 点击数：
-          <span class="hitcount">{{ news.hitcount }}</span>
-          <div>{{ news.content }}</div>
-        </div>
+        <div class="pushTime">{{ item.pushTime }}</div>
+        <div class="line"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { useRouter } from "vue-router";
 import { reactive, ref } from "vue";
 export default {
-  name: "NewsCenter",
+  name: "News",
 
   setup() {
-    // const count = ref(0);
-    const news = ref({
-      title: "坚定不移听党话跟党走",
-      origin: "中国共青杂志",
-      author: "xxx",
-      publishtime: "xxx",
-      hitcount: 0,
-      content: "xxxxxxx",
-    });
-    return { news };
+    const newsItem = reactive([
+      {
+        id: 1,
+        title: "习近平：在庆祝中国共产主义青年团100周年大会上的的讲话",
+        pushTime: "[2022-05-10]",
+      },
+      {
+        id: 2,
+        title: "习近平：在庆祝中国共产主义青年团100周年大会上的的讲话",
+        pushTime: "[2022-05-10]",
+      },
+      {
+        id: 3,
+        title: "习近平：在庆祝中国共产主义青年团100周年大会上的的讲话",
+        pushTime: "[2022-05-10]",
+      },
+      {
+        id: 4,
+        title: "习近平：在庆祝中国共产主义青年团100周年大会上的的讲话",
+        pushTime: "[2022-05-10]",
+      },
+      {
+        id: 5,
+        title: "习近平：在庆祝中国共产主义青年团100周年大会上的的讲话",
+        pushTime: "[2022-05-10]",
+      },
+    ]);
+    const router = useRouter();
+    // const toCenter = () => {
+    //   router.push({ name: "NewsCenter" });
+    // };
+    return { newsItem };
   },
 };
 </script>
@@ -89,7 +106,7 @@ export default {
       li:hover {
         background: #fff;
       }
-      .title {
+      .type {
         height: 50px;
         line-height: 50px;
         border: 1px solid #dcdcdc;
@@ -124,23 +141,29 @@ export default {
       color: #939393;
     }
   }
-  .right_nr {
-    color: #636363;
-    padding: 20px 0;
+  .text {
+    font-family: 宋体;
+    border-bottom: 1px dashed rgb(187, 187, 187);
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    justify-content: space-between;
     .title {
-      text-align: center;
-      font-size: 30px;
-      line-height: 50px;
-      font-weight: 650;
-    }
-    .text {
-      text-align: center;
-      line-height: 35px;
       font-size: 18px;
-      margin-bottom: 15px;
-      border-top: 1px solid gray;
-      margin-top: 5px;
-      padding-top: 5px;
+      font-family: 宋体;
+      border-bottom: 1px dashed rgb(187, 187, 187);
+      height: 40px;
+      line-height: 40px;
+      text-decoration: none;
+      list-style: none;
+    }
+    div:hover {
+      cursor: pointer;
+    }
+    .pushtime {
+      width: 860px;
+      padding: 30px 30px 20px 10px;
+      color: #636363;
     }
   }
 }

@@ -1,47 +1,34 @@
-
 <template>
   <div class="wrapper">
     <div class="head">高校思政学习平台</div>
     <div class="topbar">
       <ul class="content">
-        <li class="nav">
-          <a href="" class="title">首页</a>
-        </li>
-        <li class="nav">
-          <a href="" class="title">关于我们</a>
-        </li>
-        <li class="nav">
-          <a href="" class="title" @click="toNews">新闻中心</a>
-        </li>
-        <li class="nav">
-          <a href="" class="title">思政课堂</a>
-        </li>
-        <li class="nav">
-          <a href="" class="title">名师推荐</a>
-        </li>
-        <li class="nav">
-          <a href="" class="title">交流园地</a>
-        </li>
-        <li class="nav">
-          <a href="" class="title">个人中心</a>
+        <li class="nav" v-for="nav in navList" :key="nav.text">
+          <router-link class="title" :to="nav.path">{{ nav.text }}</router-link>
         </li>
       </ul>
     </div>
   </div>
-  <router-view></router-view>
 </template>
 
 <script>
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 export default {
-  name: "StaticPart",
+  name: "HomeHeader",
   setup() {
     const router = useRouter();
-    const toNews = () => {
-      router.push({ name: "News" });
-    };
-    return { toNews };
+    const navList = reactive([
+      { path: "/", name: "home", text: "首页" },
+      { path: "/about", name: "about", text: "关于我们" },
+      { path: "/News", name: "News", text: "新闻中心" },
+      { path: "/CourseAll", name: "CourseAll", text: "思政课堂" },
+      { path: "/Teacher", name: "Teacher", text: "名师推荐" },
+      { path: "/communication", name: "communication", text: "交流园地" },
+      { path: "/selfcenter", name: "selfcenter", text: "个人中心" },
+    ]);
+
+    return { navList };
   },
 };
 </script>
@@ -85,8 +72,7 @@ export default {
 
       justify-content: center;
       text-align: center;
-      a:last-child {
-      }
+
       .title {
         text-decoration: none;
         list-style: none;
