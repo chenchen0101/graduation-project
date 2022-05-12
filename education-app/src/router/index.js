@@ -15,9 +15,8 @@ const routes = [
     component: Home,
     children: [
       { path: '', name: "HomeMain", component: HomeMain },
-      { path: '/AllCourse', name: "AllCourse", component: AllCourse },
-      { path: '/News', name: "News", component: News, children: [{ path: '/NewsCenter', name: "NewsCenter", component: NewsCenter },] },
-
+      { path: '/allCourse', name: "AllCourse", component: AllCourse },
+      { path: '/News', name: "News", component: News },
       { path: '/Teacher', name: "Teacher", component: Teacher },
       { path: "/News", name: "News", component: News },
     ]
@@ -36,7 +35,8 @@ const routes = [
 
     }
   },
-  { path: "/TeacherMsg", name: "TeacherMsg", component: TeacherMsg }
+  { path: '/NewsCenter/:id', name: "NewsCenter", component: NewsCenter },
+  { path: "/TeacherMsg/:id", name: "TeacherMsg", component: TeacherMsg }
 ]
 const router = createRouter({
   history: createWebHashHistory(),
@@ -50,6 +50,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next({ name: "Login" })
   }
-  next()
+
 })
 export default router

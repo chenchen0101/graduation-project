@@ -27,9 +27,12 @@
 
 <script>
 import { reactive, ref } from "vue";
+import { useRoute } from "vue-router";
 export default {
   name: "TeacherMsg",
   setup() {
+    const router = useRoute();
+    console.log(router.params);
     const teacherMsg = ref({
       id: 1,
       name: "朱登武",

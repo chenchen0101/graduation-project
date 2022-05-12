@@ -11,7 +11,12 @@
       <div class="teacherList">
         <div class="title">名师推荐</div>
         <div class="teacherAll">
-          <div class="teacheritem" v-for="item in TeacherList" :key="item.name">
+          <div
+            class="teacheritem"
+            v-for="item in TeacherList"
+            :key="item.name"
+            @click="toTeacherMsg(item.id)"
+          >
             <img :src="item.imgurl" class="img" />
             <p class="name">
               {{ item.name }}
@@ -24,10 +29,12 @@
 </template>
 
 <script>
+import { useRouter } from "vue-router";
 import { reactive } from "vue";
 export default {
   name: "Teacher",
   setup() {
+    const router = useRouter();
     const TeacherList = reactive([
       {
         id: 1,
@@ -37,7 +44,7 @@ export default {
       },
       {
         id: 2,
-        name: "朱登武",
+        name: "张学锋",
         imgurl:
           "http://hnqmgc.17el.cn/upload/resources/image/2016/01/19/25440.jpg",
       },
@@ -90,7 +97,10 @@ export default {
           "http://hnqmgc.17el.cn/upload/resources/image/2016/01/19/25440.jpg",
       },
     ]);
-    return { TeacherList };
+    const toTeacherMsg = (id) => {
+      router.push(`/TeacherMsg/${id}`);
+    };
+    return { TeacherList, toTeacherMsg };
   },
 };
 </script>

@@ -22,7 +22,7 @@ export default {
       { path: "/", name: "home", text: "首页" },
       { path: "/about", name: "about", text: "关于我们" },
       { path: "/News", name: "News", text: "新闻中心" },
-      { path: "/CourseAll", name: "CourseAll", text: "思政课堂" },
+      { path: "/allCourse", name: "AllCourse", text: "思政课堂" },
       { path: "/Teacher", name: "Teacher", text: "名师推荐" },
       { path: "/communication", name: "communication", text: "交流园地" },
       { path: "/selfcenter", name: "selfcenter", text: "个人中心" },
@@ -74,6 +74,8 @@ export default {
       text-align: center;
 
       .title {
+        width: 100%;
+        height: 100%;
         text-decoration: none;
         list-style: none;
         border: 0;

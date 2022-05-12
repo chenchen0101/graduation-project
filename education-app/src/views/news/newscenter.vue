@@ -21,17 +21,17 @@
         <a>首页</a>
         > 新闻中心 > 新闻资讯
       </div>
-      <div class="right_nr">
+      <div class="right_nr" v-for="item in news" :key="item.id">
         <div class="title">
-          {{ news.title }}
+          {{ item.title }}
         </div>
         <div class="text">
-          来源：&nbsp;{{ news.origin }} &nbsp; &nbsp; &nbsp;作者：{{
-            news.author
+          来源：&nbsp;{{ item.origin }} &nbsp; &nbsp; &nbsp;作者：{{
+            item.author
           }}
-          发布时间：{{ news.publishtime }} &nbsp; &nbsp; &nbsp; 点击数：
-          <span class="hitcount">{{ news.hitcount }}</span>
-          <div>{{ news.content }}</div>
+          发布时间：{{ item.publishtime }} &nbsp; &nbsp; &nbsp; 点击数：
+          <span class="hitcount">{{ item.hitcount }}</span>
+          <div>{{ item.content }}</div>
         </div>
       </div>
     </div>
@@ -45,14 +45,26 @@ export default {
 
   setup() {
     // const count = ref(0);
-    const news = ref({
-      title: "坚定不移听党话跟党走",
-      origin: "中国共青杂志",
-      author: "xxx",
-      publishtime: "xxx",
-      hitcount: 0,
-      content: "xxxxxxx",
-    });
+    const news = reactive([
+      {
+        id: 1,
+        title: "坚定不移听党话跟党走",
+        origin: "中国共青杂志",
+        author: "xxx",
+        publishtime: "xxx",
+        hitcount: 0,
+        content: "xxxxxxx",
+      },
+      {
+        id: 2,
+        title: "党的十八大",
+        origin: "中国共青杂志",
+        author: "xxx",
+        publishtime: "xxx",
+        hitcount: 0,
+        content: "xxxxxxx",
+      },
+    ]);
     return { news };
   },
 };

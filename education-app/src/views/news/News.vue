@@ -22,7 +22,7 @@
         > 新闻中心 > 新闻资讯
       </div>
       <div class="text" v-for="item in newsItem" :key="item.id">
-        <div class="title">
+        <div class="title" @click="toNewsCenter(item.id)">
           {{ item.title }}
         </div>
         <div class="pushTime">{{ item.pushTime }}</div>
@@ -67,10 +67,10 @@ export default {
       },
     ]);
     const router = useRouter();
-    // const toCenter = () => {
-    //   router.push({ name: "NewsCenter" });
-    // };
-    return { newsItem };
+    const toNewsCenter = (id) => {
+      router.push(`/NewsCenter/${id}`);
+    };
+    return { newsItem, toNewsCenter };
   },
 };
 </script>
