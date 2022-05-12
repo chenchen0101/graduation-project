@@ -6,9 +6,9 @@
       :speed="swiper_options.speed"
       :pagination="swiper_options.pagination"
     >
-      <swiper-slide
-        ><img class="img" src="../../assets/26747.jpg" alt=""
-      /></swiper-slide>
+      <swiper-slide>
+        <img class="img" src="../../assets/26747.jpg" alt="" />
+      </swiper-slide>
       <swiper-slide
         ><img class="img" src="../../assets/41725.png" alt=""
       /></swiper-slide>
@@ -62,6 +62,7 @@ export default {
       },
     });
     // 将swiper_options返回给模板中的swiper组件使用
+
     return { swiper_options };
   },
 };

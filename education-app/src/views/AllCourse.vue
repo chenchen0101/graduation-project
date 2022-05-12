@@ -2,7 +2,7 @@
 
 <script>
 export default {
-  name: "Course",
+  name: "AllCourse",
 };
 </script>
 
