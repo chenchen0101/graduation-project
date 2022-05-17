@@ -24,7 +24,7 @@ export default {
       { path: "/News", name: "News", text: "新闻中心" },
       { path: "/allCourse", name: "AllCourse", text: "思政课堂" },
       { path: "/Teacher", name: "Teacher", text: "名师推荐" },
-      { path: "/communication", name: "communication", text: "交流园地" },
+      { path: "/communication", name: "communication", text: "思政社区" },
       { path: "/selfcenter", name: "selfcenter", text: "个人中心" },
     ]);
 

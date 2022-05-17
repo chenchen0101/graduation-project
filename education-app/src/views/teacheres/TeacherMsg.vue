@@ -19,6 +19,8 @@
           <div class="workcontent">{{ teacherMsg.work }}</div>
           <div class="honor">工作荣誉</div>
           <div class="honorcontent">{{ teacherMsg.honor }}</div>
+          <div class="honor">发布课程</div>
+          <div class="honorcontent">{{ teacherMsg.pushcourse }}</div>
         </div>
       </div>
     </div>
@@ -33,15 +35,14 @@ export default {
   setup() {
     const router = useRoute();
     console.log(router.params);
-    const teacherMsg = ref({
+    const teacherMsg = reactive({
       id: 1,
       name: "朱登武",
       type: "团学导师",
       msg: "1975年5月生，男，中共党员，硕士，湖南衡阳师范学院学生工作处处长。",
       work: "2002/9——2002/12  衡阳师院中文系任党总支副书记",
-      honor: `全国优秀团干、
-        共青团十六大全国代表
-        全国优秀教育工作者`,
+      honor: "全国优秀团干、共青团十六大全国代表全国优秀教育工作者",
+      pushcourse: "《文化自信与社会主义核心价值观》",
     });
     return { teacherMsg };
   },
