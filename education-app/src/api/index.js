@@ -13,7 +13,7 @@ export async  function get(url) {
   if(response.status >=200 && response.status< 300) {
     return response.data;
   } 
-  throw new Error(`get ${url} 请求错误`)
+  console.error(`get ${url} 请求错误`)
 }
 
 /**
@@ -28,5 +28,5 @@ export async function post(url, data) {
   if(response.status >=200 && response.status< 300) {
     return response.data;
   } 
-  throw new Error(`post ${url} 请求错误`)
+  console.error(`post ${url} 请求错误`)
 }
