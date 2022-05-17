@@ -8,7 +8,9 @@ import Teacher from "../views/teacheres/Teacher.vue"
 import News from "../views/news/News.vue"
 import TeacherMsg from "../views/teacheres/TeacherMsg.vue"
 import courseContent from "../views/course/courseContent.vue"
-import Communication from "../views/communication/communication.vue"
+import Communication from "../views/communication/index.vue"
+import Article from '../views/communication/Article.vue';
+
 const routes = [
   {
     path: '/',
@@ -20,6 +22,7 @@ const routes = [
       { path: '/News', name: "News", component: News },
       { path: '/Teacher', name: "Teacher", component: Teacher },
       { path: "/Communication", name: "Communication", component: Communication },
+      { path: '/article/:id', component: Article },
     ]
   },
   {
@@ -38,10 +41,10 @@ const routes = [
   },
   {
     path: '/NewsCenter/:id', name: "NewsCenter", component: NewsCenter,
-
   },
   { path: "/TeacherMsg/:id", name: "TeacherMsg", component: TeacherMsg },
-  { path: "/courseContent/:id", name: "courseContent", component: courseContent }
+  { path: "/courseContent/:id", name: "courseContent", component: courseContent },
+  
 ]
 const router = createRouter({
   history: createWebHashHistory(),

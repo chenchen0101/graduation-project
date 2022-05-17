@@ -6,17 +6,12 @@
     </div>
     <div class="content">{{ courseMsg.content }}</div>
   </div>
-  <div class="displace">
-    <Disscuss />
-  </div>
 </template>
 
 <script>
-import Disscuss from "../Discuss.vue";
 import { reactive } from "@vue/reactivity";
 export default {
   name: "courseContent",
-  components: { Disscuss },
   setup() {
     const courseMsg = reactive({
       id: 1,

@@ -1,60 +1,64 @@
 <template>
   <div class="body">
     <div class="main">
-      <div class="left">
-        <div class="left_bt">新闻中心</div>
-        <div class="left_nr">
-          <ul class="content">
-            <li class="title">
-              <a>通知公告</a>
-            </li>
-            <li class="title">
-              <a>新闻资讯</a>
-            </li>
-            <li class="title">
-              <a>党史故事</a>
-            </li>
-          </ul>
-        </div>
-      </div>
       <div class="right">
         <div class="right_bt">
           <a href="/">首页</a>
-          > 新闻中心 > 新闻资讯
+          > 思政社区 > 文章
         </div>
         <div class="right_nr">
           <div class="title">
-            {{ news.title }}
+            {{ article.title }}
           </div>
           <div class="text">
-            来源：&nbsp;{{ news.origin }} &nbsp; &nbsp; &nbsp;作者：{{
-              news.author
+            &nbsp; &nbsp; &nbsp;作者：{{
+              article.author
             }}
-            发布时间：{{ news.publishtime }} &nbsp; &nbsp; &nbsp; 浏览数：
-            <span class="hitcount">{{ news.hitcount }}</span>
-            <div>{{ news.content }}</div>
+            发布时间：{{ article.publishtime }} &nbsp; &nbsp; &nbsp; 
+            <div class="content">{{ article.content }}</div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="displace">
+      <Disscuss :articleId="id" />
     </div>
   </div>
 </template>
 
 <script>
-import { reactive, ref } from "vue";
+import Disscuss from "../Discuss.vue";
+import { reactive } from "vue";
+import { useRoute } from 'vue-router';
+import { get } from '@/api';
+
 export default {
   name: "NewsCenter",
+  components: { Disscuss },
   setup() {
-    const news = reactive({
-      id: 1,
-      title: "坚定不移听党话跟党走",
-      origin: "中国共青杂志",
-      author: "xxx",
-      publishtime: "xxx",
-      hitcount: 0,
-      content: "xxxxxxx",
+    const article = reactive({
+      title: '',
+      author: '',
+      publishtime: '',
+      content: '',
     });
-    return { news };
+    const route = useRoute();
+    const id = route.params.id;
+    async function getArticle() {
+      const url = `/articles/${id}`;
+      const response = await get(url);
+      if(response.errcode === 0) {
+        console.log('xxx');
+        const data = response.data;
+        article.title = data.title;
+        article.author = data.author;
+        article.content = data.content;
+        article.publishtime = new Date(data.pushTime).toLocaleDateString();
+      }
+    }
+    getArticle();
+
+    return { article, id };
   },
 };
 </script>
@@ -62,7 +66,6 @@ export default {
 <style lang="scss" scoped>
 .body {
   background: #fff;
-  height: 100vh;
 }
 .main {
   background: #fff;
@@ -109,7 +112,7 @@ export default {
   }
 }
 .right {
-  width: 860px;
+  width: 100%;
   padding: 30px 30px 20px 10px;
   color: #636363;
 
@@ -142,6 +145,10 @@ export default {
       border-top: 1px solid gray;
       margin-top: 5px;
       padding-top: 5px;
+    }
+    .content {
+      text-align: left;
+      padding: 20px 100px;
     }
   }
 }

@@ -2,20 +2,14 @@
   <div class="discuss">
     <div class="title">已发布的评论:</div>
     <div class="comment-input__container">
-      <img
-        src="https://www.keaidian.com/uploads/allimg/190424/24110307_6.jpg"
-      />
-      <input type="text" placeholder="说点什么吧..." />
-      <div class="submit-btn">发布</div>
+      <input type="text" placeholder="说点什么吧..." v-model="discussText" />
+      <div class="submit-btn" @click="publishComent">发布</div>
     </div>
     <div
       class="comment__card__wrapper"
       v-for="item in userMsg"
       :key="item.userName"
     >
-      <img
-        src="https://www.keaidian.com/uploads/allimg/190424/24110307_6.jpg"
-      />
       <div class="body">
         <span class="username">{{ item.userName }}</span>
         <div class="content">{{ item.content }}</div>
@@ -27,24 +21,60 @@
   </div>
 </template>
 <script>
-import { reactive } from "@vue/reactivity";
+import { reactive, ref } from "@vue/reactivity";
+import { get, post } from "../api";
 export default {
   name: "Disscuss",
-  setup() {
+  props: {
+    articleId: Number,
+  },
+  setup(props,) {
     const discussText = ref("");
-    const userMsg = reactive([
-      { id: "1", userName: "陈晓茹", content: "xxxxx", pushTime: "2022-05-10" },
-      { id: "2", userName: "陈晓茹", content: "xxxxx", pushTime: "2022-05-10" },
-      { id: "3", userName: "陈晓茹", content: "xxxxx", pushTime: "2022-05-10" },
-    ]);
+    const userMsg = reactive([]);
+    async function getComments() {
+      const url = `/articles/${props.articleId}/comments`;
+      const response = await get(url);
+      if(response.errcode === 0) {
+        const data = response.data.map((item) => {
+          return {
+            ...item,
+            pushTime: new Date(item.pushTime).toLocaleDateString(),
+          }
+        }) 
+        userMsg.push(...data)
+      }
+    }
+    getComments();
 
-    return { userMsg };
+    async function publishComent() {
+      const url = '/articles/comments/create';
+      const data = {
+        articleId: props.articleId,
+        userAccount: localStorage.account || '未知用户',
+        content: discussText.value,        
+      }
+      const response = await post(url, data);
+      if(response.errcode === 0) {
+        const data = response.data;
+        window.alert('发布成功');
+        discussText.value = ''; 
+        userMsg.push({
+            ...data,
+            pushTime: new Date(data.pushTime).toLocaleDateString(),
+        })
+      } else {
+        window.alert('发布失败');
+      }
+    }
+
+    return { userMsg, discussText, publishComent };
   },
 };
 </script>
 <style scoped lang="scss">
 .discuss {
   margin-left: 20px;
+  padding-bottom: 30px;
 }
 .title {
   font-size: 20px;

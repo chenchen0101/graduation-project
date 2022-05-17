@@ -35,6 +35,7 @@ export default {
 
       if(response.errcode === 0) {
         localStorage.isLogin = true;
+        localStorage.account = user.account
         router.push({ name: "Home" });
       } else {
         window.alert('登录失败');
