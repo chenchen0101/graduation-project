@@ -2,10 +2,10 @@
   <div class="content">
     <div class="title">登录思政学习平台</div>
     <div class="input">
-      <input class="content" type="text" placeholder="请输入账号" />
+      <input class="content" type="text" placeholder="请输入账号" v-model="user.account" />
     </div>
     <div class="input">
-      <input class="content" type="password" placeholder="请输入密码" />
+      <input class="content" type="password" placeholder="请输入密码" v-model="user.password"  />
     </div>
     <div class="login" @click="handleLogin">提交</div>
   </div>
@@ -13,16 +13,34 @@
 
 <script>
 import { useRouter } from "vue-router";
+import { reactive } from 'vue';
+import { post } from '../../api';
 
 export default {
   name: "Login",
   setup() {
+    const user = reactive({
+      account: '',
+      password: '',
+    })
     const router = useRouter();
-    const handleLogin = () => {
-      localStorage.isLogin = true;
-      router.push({ name: "Home" });
+    const handleLogin = async () => {
+      const url = '/users/login'
+      const response = await post(url, user)
+      // 等价于
+      // const response = await post(url, {
+      //   account: user.account,
+      //   password: user.password,
+      // })
+
+      if(response.errcode === 0) {
+        localStorage.isLogin = true;
+        router.push({ name: "Home" });
+      } else {
+        window.alert('登录失败');
+      }
     };
-    return { handleLogin };
+    return { handleLogin, user };
   },
 };
 </script>
