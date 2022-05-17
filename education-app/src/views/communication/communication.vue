@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="left">
-      <div class="left_bt" @click="sort">新闻中心</div>
+      <div class="left_bt">思政社区</div>
       <div class="left_nr">
         <ul class="content">
           <li
@@ -18,7 +18,7 @@
     <div class="right">
       <div class="right_bt">
         <a href="/">首页</a>
-        > 新闻中心 > 新闻资讯
+        > 思政社区
       </div>
       <div class="text" v-for="item in filterNews" :key="item.id">
         <div class="title" @click="toNewsCenter(item.id)">
@@ -38,9 +38,9 @@ export default {
   name: "News",
   setup() {
     const navType = reactive([
-      { id: 1, type: "通知公告" },
-      { id: 2, type: "新闻资讯" },
-      { id: 3, type: "党史故事" },
+      { id: 1, type: "中心社区" },
+      { id: 2, type: "我要发布" },
+      { id: 3, type: "我要提案" },
     ]);
     const newsItem = reactive([
       {
@@ -81,17 +81,12 @@ export default {
         return item.type.includes(navType);
       });
     };
-    //按发布时间排序
-    const sort = () => {
-      filterNews.value.sort(function (a, b) {
-        return b.pushTime < a.pushTime ? -1 : 1;
-      });
-    };
+
     const router = useRouter();
     const toNewsCenter = (id) => {
       router.push(`/NewsCenter/${id}`);
     };
-    return { newsItem, toNewsCenter, navType, handleNav, filterNews, sort };
+    return { newsItem, toNewsCenter, navType, handleNav, filterNews };
   },
 };
 </script>
@@ -112,10 +107,10 @@ export default {
   font-size: 20px;
   color: #fff;
   .left_bt {
-    background: #2a2a2a;
+    font-size: 35px;
     height: 50px;
     line-height: 50px;
-    border-bottom: 3px solid #c20e0e;
+    color: #6ac400;
     text-align: center;
   }
   .left_nr {

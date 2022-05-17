@@ -1,51 +1,57 @@
 <template>
-  <div class="main">
-    <div class="left">
-      <div class="left_bt">新闻中心</div>
-      <div class="left_nr">
-        <ul class="content">
-          <li class="title">
-            <a>通知公告</a>
-          </li>
-          <li class="title">
-            <a>新闻资讯</a>
-          </li>
-          <li class="title">
-            <a>党史故事</a>
-          </li>
-        </ul>
+  <div class="body">
+    <div class="main">
+      <div class="left">
+        <div class="left_bt">新闻中心</div>
+        <div class="left_nr">
+          <ul class="content">
+            <li class="title">
+              <a>通知公告</a>
+            </li>
+            <li class="title">
+              <a>新闻资讯</a>
+            </li>
+            <li class="title">
+              <a>党史故事</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="right">
+        <div class="right_bt">
+          <a href="/">首页</a>
+          > 新闻中心 > 新闻资讯
+        </div>
+        <div class="right_nr">
+          <div class="title">
+            {{ news.title }}
+          </div>
+          <div class="text">
+            来源：&nbsp;{{ news.origin }} &nbsp; &nbsp; &nbsp;作者：{{
+              news.author
+            }}
+            发布时间：{{ news.publishtime }} &nbsp; &nbsp; &nbsp; 浏览数：
+            <span class="hitcount">{{ news.hitcount }}</span>
+            <div>{{ news.content }}</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="right">
-      <div class="right_bt">
-        <a>首页</a>
-        > 新闻中心 > 新闻资讯
-      </div>
-      <div class="right_nr">
-        <div class="title">
-          {{ news.title }}
-        </div>
-        <div class="text">
-          来源：&nbsp;{{ news.origin }} &nbsp; &nbsp; &nbsp;作者：{{
-            news.author
-          }}
-          发布时间：{{ news.publishtime }} &nbsp; &nbsp; &nbsp; 点击数：
-          <span class="hitcount">{{ news.hitcount }}</span>
-          <div>{{ news.content }}</div>
-        </div>
-      </div>
+    <div class="displace">
+      <Disscuss />
     </div>
   </div>
 </template>
 
 <script>
+import Disscuss from "../Discuss.vue";
 import { reactive, ref } from "vue";
 export default {
   name: "NewsCenter",
-
+  components: { Disscuss },
   setup() {
-    // const count = ref(0);
-    const news = ref({
+    const news = reactive({
+      id: 1,
       title: "坚定不移听党话跟党走",
       origin: "中国共青杂志",
       author: "xxx",
@@ -59,9 +65,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.body {
+  background: #fff;
+}
 .main {
-  // width: 1300px;
-  height: 1200px;
   background: #fff;
   margin: 0 auto;
   display: flex;
@@ -69,8 +76,7 @@ export default {
 .left {
   margin: 75px 35px 0 35px;
   width: 350px;
-  height: 195px;
-  // background: pink;
+
   font-size: 20px;
   color: #fff;
   .left_bt {
@@ -121,7 +127,6 @@ export default {
     a {
       text-decoration: none;
       list-style: none;
-      color: #939393;
     }
   }
   .right_nr {
@@ -143,5 +148,8 @@ export default {
       padding-top: 5px;
     }
   }
+}
+.displace {
+  margin: 100px 0 0 90px;
 }
 </style>

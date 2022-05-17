@@ -43,6 +43,7 @@ export default {
     ]);
     const courseList = reactive([
       {
+        id: 1,
         name: "文化自信与社会主义核心价值观",
         imgurl:
           "	http://qmos.17el.cn//imgs/12/9/courseImg//330a10af-e3fa-4132-86b2-dea7e16da7bc.jpg",

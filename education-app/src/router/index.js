@@ -2,12 +2,14 @@ import { createRouter, createWebHashHistory } from "vue-router"
 import Home from '../components/home/Home.vue'
 import NewsCenter from '../views/news/NewsCenter.vue'
 import Login from '../views/login/login.vue'
-import AllCourse from '../views/AllCourse.vue'
+import AllCourse from '../views/course/AllCourse.vue'
 import HomeMain from "../components/home/HomeMain.vue"
 import HomeCourse from "../components/home/HomeCourse.vue"
 import Teacher from "../views/teacheres/Teacher.vue"
 import News from "../views/news/News.vue"
 import TeacherMsg from "../views/teacheres/TeacherMsg.vue"
+import courseContent from "../views/course/courseContent.vue"
+import Communication from "../views/communication/communication.vue"
 const routes = [
   {
     path: '/',
@@ -15,11 +17,10 @@ const routes = [
     component: Home,
     children: [
       { path: '', name: "HomeMain", component: HomeMain },
-      { path: '/AllCourse', name: "AllCourse", component: AllCourse },
-      { path: '/News', name: "News", component: News, children: [{ path: '/NewsCenter', name: "NewsCenter", component: NewsCenter },] },
-
+      { path: '/allCourse', name: "AllCourse", component: AllCourse },
+      { path: '/News', name: "News", component: News },
       { path: '/Teacher', name: "Teacher", component: Teacher },
-      { path: "/News", name: "News", component: News },
+      { path: "/Communication", name: "Communication", component: Communication },
     ]
   },
   {
@@ -36,7 +37,12 @@ const routes = [
 
     }
   },
-  { path: "/TeacherMsg", name: "TeacherMsg", component: TeacherMsg }
+  {
+    path: '/NewsCenter/:id', name: "NewsCenter", component: NewsCenter,
+
+  },
+  { path: "/TeacherMsg/:id", name: "TeacherMsg", component: TeacherMsg },
+  { path: "/courseContent/:id", name: "courseContent", component: courseContent }
 ]
 const router = createRouter({
   history: createWebHashHistory(),
@@ -50,6 +56,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next({ name: "Login" })
   }
-  next()
+
 })
 export default router
