@@ -1,10 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router"
-import Home from '../components/home/Home.vue'
+import Home from '../components/home/index.vue'
 import NewsCenter from '../views/news/NewsCenter.vue'
 import Login from '../views/login/login.vue'
 import AllCourse from '../views/course/AllCourse.vue'
 import HomeMain from "../components/home/HomeMain.vue"
-import HomeCourse from "../components/home/HomeCourse.vue"
 import Teacher from "../views/teacheres/Teacher.vue"
 import News from "../views/news/News.vue"
 import TeacherMsg from "../views/teacheres/TeacherMsg.vue"

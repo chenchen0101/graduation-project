@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import HomeHeader from "../home/Homeheader.vue";
+import HomeHeader from "../home/HomeHeader.vue";
 export default {
   name: "Home",
   components: { HomeHeader },
